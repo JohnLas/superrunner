@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{ race.name }}</h1>
+	<h3>{{ race.city }} le {{ race.date_start }}</h3>
+	<p>{{ race.description }}</p>
+	<ul>
+		<li>Distance : {{ race.distance_meter }} meters</li>
+		<li>Participants : {{ race.max_runner_number }} </li>
+		<li>Temps maximum : {{ race.max_time }} secondes</li>
+		<li>Tarif : {{ race.price }} euros</li>
+	</ul>
+	<iframe src="{{ race.path_url }}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+{% endblock %}

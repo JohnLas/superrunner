@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <link rel="stylesheet" href="/media/css/style.css" />
+   <title>{% block title %}SuperRunner{% endblock %}</title>
+</head>
+<body>
+<header>SuperRunnerLogo</header>
+    <nav>
+       {% block nav %}
+       <ul>
+            <li><a href="{% url "home" %}">Accueil</a></li>
+            <li><a href="{% url "races" %}">Races</a></li>
+            <li><a href="{% url "runners"  %}">Runners</a></li>
+       </ul>
+       {% endblock %}
+   </nav>
+   <section id="content">
+       {% block content %}{% endblock %}
+   </section>
+<footer>&copy; SuperRunner</footer>
+</body>
+</html>

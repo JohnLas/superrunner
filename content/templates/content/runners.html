@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Runner's list</h1>
+	<ul>
+	{% for runner in runners %}
+    	<li>{{ runner.firstname }} {{ runner.name }}</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
