@@ -3,11 +3,16 @@
 	<h1>{{ race.name }}</h1>
 	<h3>{{ race.city }} le {{ race.date_start }}</h3>
 	<p>{{ race.description }}</p>
-	<ul>
-		<li>Distance : {{ race.distance_meter }} meters</li>
-		<li>Participants : {{ race.max_runner_number }} </li>
-		<li>Temps maximum : {{ race.max_time }} secondes</li>
-		<li>Tarif : {{ race.price }} euros</li>
-	</ul>
-	<iframe src="{{ race.path_url }}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+	{% for route in routes %}
+    	<h3>Parcours {{ route.distance_meter }}mètres</h3>
+    	<ul>
+			<li>Participants : {{ route.max_runner_number }} </li>
+			<li>Temps maximum : {{ route.max_time }} secondes</li>
+			<li>Tarif : {{ route.price }} euros</li>
+		</ul>
+		<iframe src="{{ route.path_url }}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+	{% endfor %}
+
+
 {% endblock %}

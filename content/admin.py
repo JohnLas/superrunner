@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Race
+from .models import Race, Route
 from django.utils.text import Truncator
 
 
@@ -16,3 +16,4 @@ class RaceAdmin(admin.ModelAdmin):
    description_truncated.short_description = 'Description'
 
 admin.site.register(Race, RaceAdmin)
+admin.site.register(Route)
