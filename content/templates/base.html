@@ -14,17 +14,22 @@
    {% bootstrap_messages %}
 </head>
 <body>
-<header>SuperRunnerLogo</header>
     <nav>
        {% block nav %}
-       <ul>
-            <li><a href="{% url "home" %}">Accueil</a></li>
-       </ul>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{% url "home" %}">
+                SuperRunner
+              </a>
+            </div>
+          </div>
+        </nav>
        {% endblock %}
    </nav>
    <section id="content">
        {% block content %}{% endblock %}
    </section>
-<footer>&copy; SuperRunner</footer>
+<footer>&copy; SuperRunner 2017</footer>
 </body>
 </html>

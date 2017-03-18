@@ -1,17 +1,26 @@
 {% extends "base.html" %}
+{% load helpers_content %}
 {% block content %}
-	<h1>{{ race.name }}</h1>
-	<h3>{{ race.city }} le {{ race.date_start }}</h3>
+	<div class="page-header">
+  		<h1>{{ race.name }}<br/><small>{{ race.city }} le {{ race.date_start }}</small></h1>
+	</div>
+
 	<p>{{ race.description }}</p>
 
 	{% for route in routes %}
-    	<h3>Parcours {{ route.distance_meter }}mètres</h3>
-    	<ul>
-			<li>Participants : {{ route.max_runner_number }} </li>
-			<li>Temps maximum : {{ route.max_time }} secondes</li>
-			<li>Tarif : {{ route.price }} euros</li>
-		</ul>
-		<iframe src="{{ route.path_url }}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Parcours {{ route.distance_meter|get_race_name }}</h3>
+			</div>
+			<div class="panel-body">
+				<iframe src="{{ route.path_url }}" height="450" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+		    	<ul>
+					<li>Participants : {{ route.max_runner_number }} </li>
+					<li>Temps maximum : {{ route.max_time }} secondes</li>
+					<li>Tarif : {{ route.price }} euros</li>
+				</ul>
+		  	</div>
+		</div>
 	{% endfor %}
 
 
