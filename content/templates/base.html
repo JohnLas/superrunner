@@ -3,6 +3,15 @@
 <head>
    <link rel="stylesheet" href="/media/css/style.css" />
    <title>{% block title %}SuperRunner{% endblock %}</title>
+   {# Load the tag library #}
+   {% load bootstrap3 %}
+
+   {# Load CSS and JavaScript #}
+   {% bootstrap_css %}
+   {% bootstrap_javascript %}
+
+   {# Display django.contrib.messages as Bootstrap alerts #}
+   {% bootstrap_messages %}
 </head>
 <body>
 <header>SuperRunnerLogo</header>
