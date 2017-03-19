@@ -6,10 +6,12 @@ class Race(models.Model):
     postal_code = models.CharField(max_length=100)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    facebook_page_url = models.URLField(max_length=1000,default="")
     description = models.CharField(max_length=10000)
     date_start = models.DateTimeField(auto_now_add=False, auto_now=False)
     date_creation = models.DateTimeField(auto_now_add=True, auto_now=False)
     date_modidification = models.DateTimeField(auto_now_add=False, auto_now=True)
+
 
     def __str__(self):
         """ 

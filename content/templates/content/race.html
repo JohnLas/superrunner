@@ -1,27 +1,45 @@
 {% extends "base.html" %}
 {% load helpers_content %}
 {% block content %}
-	<div class="page-header">
-  		<h1>{{ race.name }}<br/><small>{{ race.city }} le {{ race.date_start }}</small></h1>
-	</div>
 
-	<p>{{ race.description }}</p>
+<!-- NEED REFACTO : A mettre dans content/includes/facebook/pageJs.html-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8&appId=157500957594993";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- NEED REFACTO-->
 
-	{% for route in routes %}
+
+<div class="page-header">
+	<h1>{{ race.name }}<br/><small>{{ race.city }} le {{ race.date_start }}</small></h1>
+</div>
+<div class="row">
+	<div class="col-sm-6 col-md-8">
+		<p>{{ race.description }}</p>
+
+		{% for route in routes %}
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h3 class="panel-title">Parcours {{ route.distance_meter|get_race_name }}</h3>
+				<h3 class="panel-title">Parcours {{ route.distance_meter|get_race_name }}</h3>
 			</div>
 			<div class="panel-body">
-				{% include "content/includes/map/mapHtml.html" with route=route%}    
-		    	<ul>
+				{% include "content/includes/map/mapHtml.html" with route=route%}
+				<ul>
 					<li>Participants : {{ route.max_runner_number }} </li>
 					<li>Temps maximum : {{ route.max_time }} secondes</li>
 					<li>Tarif : {{ route.price }} euros</li>
 				</ul>
-		  	</div>
+			</div>
 		</div>
-	{% endfor %}
-	{% include "content/includes/map/mapJs.html" with routes=routes %}    
-
+		{% endfor %}
+	</div>
+	{% if race.facebook_page_url %}
+		<div class="col-sm-6 col-md-4">{% include "content/includes/facebook/page/pageHtml.html" with url=race.facebook_page_url%}</div>
+	{% endif %}
+</div>
+{% include "content/includes/map/mapJs.html" with routes=routes %}
 {% endblock %}
