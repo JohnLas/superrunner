@@ -1,0 +1,36 @@
+{% load static %}
+
+<script type="text/javascript">
+var map;
+function initMap(id, path) {
+
+  map = new google.maps.Map(document.getElementById('map'+id), {
+    center: {lat: 48.404675, lng: 2.701620},
+    zoom: 8,
+    zoomControl: false,
+	mapTypeControl: false,
+	scaleControl: false,
+	streetViewControl: false,
+	rotateControl: false,
+	scrollwheel: false,
+	draggable: false,
+	disableDoubleClickZoom: true,
+  });
+
+  //var ctaLayer = new google.maps.KmlLayer('{% static . %}'+kml);
+  var ctaLayer = new google.maps.KmlLayer(path);
+  ctaLayer.setMap(map);
+
+}
+
+function initMaps() {
+  {% for route in routes %}
+      //initMap({{route.id}},'http://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1HxRXhqasMz6kmWlsfhvsxCXiq1E&lid=nyCvAKJlIMY')
+      initMap({{route.id}},'{{route.path_url|safe}}')
+  {% endfor %}
+}
+
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvm0MmZ_wGCDQEz1re54v09PZ06qRedG8&callback=initMaps">
+</script>

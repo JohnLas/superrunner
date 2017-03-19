@@ -25,7 +25,7 @@ class Route(models.Model):
 	max_time = models.IntegerField()
 	price = models.FloatField()
 	race = models.ForeignKey('Race')
-	path_url = models.CharField(max_length=1000)
+	path_url = models.URLField(max_length=1000)
 	date_start = models.DateTimeField(auto_now_add=False, auto_now=False)
 
 	def __str__(self):

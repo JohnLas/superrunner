@@ -13,3 +13,8 @@ def race(request,id_race=1):
 def races(request):
 	races = Race.objects.all()
 	return render(request, 'content/races.html', {'races': races})
+
+
+def map(request):
+	return render(request, 'content/includes/map/map.html')
+
