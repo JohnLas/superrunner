@@ -25,7 +25,6 @@ function initMap(id, path) {
 
 function initMaps() {
   {% for route in routes %}
-      //initMap({{route.id}},'http://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1HxRXhqasMz6kmWlsfhvsxCXiq1E&lid=nyCvAKJlIMY')
       initMap({{route.id}},'{{route.path_url|safe}}')
   {% endfor %}
 }
