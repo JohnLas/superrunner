@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load helpers_content %}
 {% block content %}
 
 <!-- NEED REFACTO : A mettre dans content/includes/facebook/pageJs.html-->
@@ -24,7 +23,7 @@
 		{% for route in routes %}
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Parcours {{ route.distance_meter|get_race_name }}</h3>
+				<h3 class="panel-title">Parcours {{ route.distance_meter }}</h3>
 			</div>
 			<div class="panel-body">
 				{% include "content/includes/map/mapHtml.html" with route=route%}
